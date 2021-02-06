@@ -7,8 +7,16 @@ class Record {
   String recordType;
   String recordDomainName;
 
-  Record.forAdd(this.id, this.title, this.body, this.disctrictID, this.userID,
-      this.recordType, this.recordDomainName);
+  Record.forAdd(this.title, this.body, this.recordType, this.recordDomainName);
 
   Record();
+
+  Map toJsonAdd() {
+    return {
+      "title": title,
+      "body": body,
+      "recordType": recordType,
+      "domain": recordDomainName
+    };
+  }
 }
