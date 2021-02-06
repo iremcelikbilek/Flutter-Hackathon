@@ -38,7 +38,7 @@ class Register4 extends StatelessWidget {
                   child: Text("Map"),
                 ),
                 Button(
-                  buttonText: "İleri",
+                  buttonText: "Kaydol",
                   shadowColor: Colors.deepPurple[300],
                   onTap: () {}, // Ana sayfaya aktarma
                 ),

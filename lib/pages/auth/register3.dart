@@ -33,9 +33,7 @@ class Register3 extends StatelessWidget {
                   ],
                 ),
                 Input(
-                    txtController: txtName,
-                    labelText: "Şifre",
-                    isObsure: true),
+                    txtController: txtName, labelText: "Şifre", isObsure: true),
                 Input(
                   txtController: txtLastName,
                   labelText: "Şifre Tekrar",

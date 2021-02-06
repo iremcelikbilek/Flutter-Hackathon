@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-
 class Footer extends StatelessWidget {
   String buttonText;
   String infoText;
   VoidCallback onTap;
 
-  Footer({
-    @required this.buttonText,
-    @required this.infoText,
-    @required this.onTap});
+  Footer(
+      {@required this.buttonText,
+      @required this.infoText,
+      @required this.onTap});
 
   @override
   Widget build(BuildContext context) {

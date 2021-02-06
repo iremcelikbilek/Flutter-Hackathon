@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
-import 'package:flutter_hackathon/pages/login.page.dart';
+import 'file:///C:/Users/Sefa/Documents/GitHub/Flutter-Hackathon/lib/pages/auth/login.page.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
 
-void main(){
+void main() {
   setUpLocators();
   runApp(MyApp());
 }

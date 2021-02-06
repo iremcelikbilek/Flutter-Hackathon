@@ -67,7 +67,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   get_it:
     dependency: "direct main"
     description:
@@ -75,7 +74,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.6"
-=======
   http:
     dependency: "direct main"
     description:
@@ -90,7 +88,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
->>>>>>> 1cf121e55a573915357b3bbe903378538e1412d7
   matcher:
     dependency: transitive
     description:

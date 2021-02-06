@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
-import 'file:///C:/Users/Hp/Desktop/Flutter-Hackathon/lib/pages/auth/register.page.dart';
+import 'register.page.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
 import 'package:flutter_hackathon/widgets/common/buttons.dart';
 import 'package:flutter_hackathon/widgets/common/footer.dart';
@@ -38,22 +38,26 @@ class _LoginPageState extends State<LoginPage> {
                   TextContent(
                       content: "Hesabını oluşturduysan hızlıca giriş yap."),
                 ]),
-
-                Input(txtController: txtMail,labelText: "Kullanıcı E-Posta",isObsure: false),
-                Input(txtController: txtPassword,labelText: "Şifre",isObsure: true),
+                Input(
+                    txtController: txtMail,
+                    labelText: "Kullanıcı E-Posta",
+                    isObsure: false),
+                Input(
+                    txtController: txtPassword,
+                    labelText: "Şifre",
+                    isObsure: true),
                 Button(
                   buttonText: "Giriş",
                   shadowColor: Colors.green[300],
-                  onTap: (){}, // HOME Page yönlendirme kısmı
+                  onTap: () {}, // HOME Page yönlendirme kısmı
                 ),
                 Footer(
-                    buttonText: "Kaydol",
-                    infoText: 'Hesabın yok mu?',
+                  buttonText: "Kaydol",
+                  infoText: 'Hesabın yok mu?',
                   onTap: () async {
-                      await rooter.navigateTo(RegisterPage());
-                      },
+                    await rooter.navigateTo(RegisterPage());
+                  },
                 ),
-
               ],
             ),
           ],

@@ -6,7 +6,8 @@ class Input extends StatelessWidget {
   bool isObsure;
   TextInputType textInputType;
 
-  Input({this.txtController, this.labelText, this.isObsure,this.textInputType});
+  Input(
+      {this.txtController, this.labelText, this.isObsure, this.textInputType});
 
   @override
   Widget build(BuildContext context) {
