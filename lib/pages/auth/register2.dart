@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/locator.dart';
+import 'package:flutter_hackathon/pages/auth/register3.dart';
+import 'package:flutter_hackathon/utils/rooter.dart';
 import 'package:flutter_hackathon/widgets/common/buttons.dart';
-import 'package:flutter_hackathon/widgets/common/footer.dart';
 import 'package:flutter_hackathon/widgets/common/inputs.dart';
 import 'package:flutter_hackathon/widgets/common/textContent.dart';
 import 'package:flutter_hackathon/widgets/common/textVertical.dart';
 
-class RegisterPage extends StatefulWidget {
-  @override
-  _RegisterPageState createState() => _RegisterPageState();
-}
-
-class _RegisterPageState extends State<RegisterPage> {
+class Register2 extends StatelessWidget {
   final TextEditingController txtName = TextEditingController();
   final TextEditingController txtLastName = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var rooter = locator<Rooter>();
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -31,13 +29,24 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   children: <Widget>[
                     TextVertical(verticalText: "Kaydol"),
-                    TextContent(content: "Hesabın yoksa hesap oluşturmalısın."),
+                    TextContent(content: "Adım 2 : İletişim Bilgileri"),
                   ],
                 ),
-                Input(txtController: txtName,labelText: "İsim",isObsure: false),
-                Input(txtController: txtLastName,labelText: "Soy İsim",isObsure: false),
-                Button(buttonText: "İleri",shadowColor: Colors.deepPurple[300]),
-                Footer(buttonText: 'Giriş Yap',infoText: 'Hesabın var mı?'),
+                Input(
+                    txtController: txtName,
+                    labelText: "E-Posta",
+                    isObsure: false),
+                Input(
+                  txtController: txtLastName,
+                  labelText: "Telefon",
+                  isObsure: false,
+                  textInputType: TextInputType.phone,
+                ),
+                Button(
+                  buttonText: "İleri",
+                  shadowColor: Colors.deepPurple[300],
+                  onTap: () => rooter.navigateTo(Register3()),
+                ),
               ],
             ),
           ],

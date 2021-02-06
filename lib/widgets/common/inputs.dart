@@ -4,8 +4,9 @@ class Input extends StatelessWidget {
   TextEditingController txtController;
   String labelText;
   bool isObsure;
+  TextInputType textInputType;
 
-  Input({this.txtController, this.labelText, this.isObsure});
+  Input({this.txtController, this.labelText, this.isObsure,this.textInputType});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class Input extends StatelessWidget {
         height: 60,
         width: MediaQuery.of(context).size.width,
         child: TextField(
+          keyboardType: textInputType,
           controller: txtController,
           style: TextStyle(
             color: Colors.white,
@@ -32,5 +34,3 @@ class Input extends StatelessWidget {
     );
   }
 }
-
-

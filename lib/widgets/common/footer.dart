@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hackathon/pages/register.page.dart';
+
 
 class Footer extends StatelessWidget {
   String buttonText;
   String infoText;
   VoidCallback onTap;
 
-  Footer({this.buttonText, this.infoText, this.onTap});
+  Footer({
+    @required this.buttonText,
+    @required this.infoText,
+    @required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +30,7 @@ class Footer extends StatelessWidget {
             ),
             FlatButton(
               padding: EdgeInsets.all(0),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterPage()));
-              },
+              onPressed: onTap,
               child: Text(
                 buttonText,
                 style: TextStyle(
@@ -43,7 +43,7 @@ class Footer extends StatelessWidget {
           ],
         ),
       ),
-    );;
+    );
+    ;
   }
 }
-

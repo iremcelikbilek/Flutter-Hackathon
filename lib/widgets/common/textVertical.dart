@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class TextVertical extends StatelessWidget {
   String verticalText;
 
-
   TextVertical({this.verticalText});
 
   @override

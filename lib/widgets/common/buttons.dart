@@ -6,7 +6,14 @@ class Button extends StatelessWidget {
   VoidCallback onTap;
   Color shadowColor;
 
-  Button({this.buttonText, this.onTap,this.shadowColor});
+<<<<<<< HEAD
+  Button({
+    @required this.buttonText,
+    @required this.onTap,
+    @required this.shadowColor});
+=======
+  Button({this.buttonText, this.onTap, this.shadowColor});
+>>>>>>> 1cf121e55a573915357b3bbe903378538e1412d7
 
   @override
   Widget build(BuildContext context) {

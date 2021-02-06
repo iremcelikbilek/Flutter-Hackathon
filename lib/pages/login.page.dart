@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/locator.dart';
+import 'file:///C:/Users/Hp/Desktop/Flutter-Hackathon/lib/pages/auth/register.page.dart';
+import 'package:flutter_hackathon/utils/rooter.dart';
 import 'package:flutter_hackathon/widgets/common/buttons.dart';
 import 'package:flutter_hackathon/widgets/common/footer.dart';
 import 'package:flutter_hackathon/widgets/common/inputs.dart';
@@ -16,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var rooter = locator<Rooter>();
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -30,12 +35,39 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Row(children: <Widget>[
                   TextVertical(verticalText: "Giriş Yap"),
-                  TextContent(content: "Hesabını oluşturduysan hızlıca giriş yap."),
+                  TextContent(
+                      content: "Hesabını oluşturduysan hızlıca giriş yap."),
                 ]),
+<<<<<<< HEAD
                 Input(txtController: txtMail,labelText: "Kullanıcı E-Posta",isObsure: false),
                 Input(txtController: txtPassword,labelText: "Şifre",isObsure: true),
-                Button(buttonText: "Giriş",shadowColor: Colors.green[300],),
-                Footer(buttonText: "Kaydol",infoText: 'Hesabın yok mu?')
+                Button(
+                  buttonText: "Giriş",
+                  shadowColor: Colors.green[300],
+                  onTap: (){}, // HOME Page yönlendirme kısmı
+                ),
+                Footer(
+                    buttonText: "Kaydol",
+                    infoText: 'Hesabın yok mu?',
+                  onTap: () async {
+                      await rooter.navigateTo(RegisterPage());
+                      },
+                ),
+=======
+                Input(
+                    txtController: txtMail,
+                    labelText: "Kullanıcı E-Posta",
+                    isObsure: false),
+                Input(
+                    txtController: txtPassword,
+                    labelText: "Şifre",
+                    isObsure: true),
+                Button(
+                  buttonText: "Giriş",
+                  shadowColor: Colors.green[300],
+                ),
+                Footer(buttonText: "Kaydol", infoText: 'Hesabın yok mu?')
+>>>>>>> 1cf121e55a573915357b3bbe903378538e1412d7
               ],
             ),
           ],
