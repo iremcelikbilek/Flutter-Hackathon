@@ -30,12 +30,22 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Row(children: <Widget>[
                   TextVertical(verticalText: "Giriş Yap"),
-                  TextContent(content: "Hesabını oluşturduysan hızlıca giriş yap."),
+                  TextContent(
+                      content: "Hesabını oluşturduysan hızlıca giriş yap."),
                 ]),
-                Input(txtController: txtMail,labelText: "Kullanıcı E-Posta",isObsure: false),
-                Input(txtController: txtPassword,labelText: "Şifre",isObsure: true),
-                Button(buttonText: "Giriş",shadowColor: Colors.green[300],),
-                Footer(buttonText: "Kaydol",infoText: 'Hesabın yok mu?')
+                Input(
+                    txtController: txtMail,
+                    labelText: "Kullanıcı E-Posta",
+                    isObsure: false),
+                Input(
+                    txtController: txtPassword,
+                    labelText: "Şifre",
+                    isObsure: true),
+                Button(
+                  buttonText: "Giriş",
+                  shadowColor: Colors.green[300],
+                ),
+                Footer(buttonText: "Kaydol", infoText: 'Hesabın yok mu?')
               ],
             ),
           ],

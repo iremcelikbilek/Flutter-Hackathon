@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class TextContent extends StatelessWidget {
   String content;
 
-
   TextContent({this.content});
 
   @override

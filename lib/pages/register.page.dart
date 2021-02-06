@@ -34,10 +34,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextContent(content: "Hesabın yoksa hesap oluşturmalısın."),
                   ],
                 ),
-                Input(txtController: txtName,labelText: "İsim",isObsure: false),
-                Input(txtController: txtLastName,labelText: "Soy İsim",isObsure: false),
-                Button(buttonText: "İleri",shadowColor: Colors.deepPurple[300]),
-                Footer(buttonText: 'Giriş Yap',infoText: 'Hesabın var mı?'),
+                Input(
+                    txtController: txtName, labelText: "İsim", isObsure: false),
+                Input(
+                    txtController: txtLastName,
+                    labelText: "Soy İsim",
+                    isObsure: false),
+                Button(
+                    buttonText: "İleri", shadowColor: Colors.deepPurple[300]),
+                Footer(buttonText: 'Giriş Yap', infoText: 'Hesabın var mı?'),
               ],
             ),
           ],
