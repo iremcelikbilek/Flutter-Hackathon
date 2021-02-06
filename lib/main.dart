@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
-import 'file:///C:/Users/Sefa/Documents/GitHub/Flutter-Hackathon/lib/pages/auth/login.page.dart';
+import 'package:flutter_hackathon/pages/auth/login.page.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
 
 void main() {
