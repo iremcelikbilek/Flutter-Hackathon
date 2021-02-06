@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-class InputPassword extends StatefulWidget {
-  TextEditingController txtPassword;
-  InputPassword(this.txtPassword);
+class Input extends StatelessWidget {
+  TextEditingController txtController;
+  String labelText;
+  bool isObsure;
 
-  @override
-  _InputPasswordState createState() => _InputPasswordState();
-}
+  Input({this.txtController, this.labelText, this.isObsure});
 
-class _InputPasswordState extends State<InputPassword> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,14 +15,14 @@ class _InputPasswordState extends State<InputPassword> {
         height: 60,
         width: MediaQuery.of(context).size.width,
         child: TextField(
-          controller: widget.txtPassword,
+          controller: txtController,
           style: TextStyle(
             color: Colors.white,
           ),
           obscureText: true,
           decoration: InputDecoration(
             border: InputBorder.none,
-            labelText: 'Şifre',
+            labelText: labelText,
             labelStyle: TextStyle(
               color: Colors.white70,
             ),
@@ -34,3 +32,5 @@ class _InputPasswordState extends State<InputPassword> {
     );
   }
 }
+
+

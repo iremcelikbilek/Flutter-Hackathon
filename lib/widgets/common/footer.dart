@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/pages/register.page.dart';
 
-class FirstTime extends StatefulWidget {
-  @override
-  _FirstTimeState createState() => _FirstTimeState();
-}
+class Footer extends StatelessWidget {
+  String buttonText;
+  String infoText;
+  VoidCallback onTap;
 
-class _FirstTimeState extends State<FirstTime> {
+  Footer({this.buttonText, this.infoText, this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +19,7 @@ class _FirstTimeState extends State<FirstTime> {
         child: Row(
           children: <Widget>[
             Text(
-              'Hesabın yok mu?',
+              infoText,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.white70,
@@ -25,8 +27,12 @@ class _FirstTimeState extends State<FirstTime> {
             ),
             FlatButton(
               padding: EdgeInsets.all(0),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()));
+              },
               child: Text(
-                'Kaydol',
+                buttonText,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.white,
@@ -37,6 +43,7 @@ class _FirstTimeState extends State<FirstTime> {
           ],
         ),
       ),
-    );
+    );;
   }
 }
+

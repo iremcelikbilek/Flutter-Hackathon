@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TextLogin extends StatefulWidget {
-  @override
-  _TextLoginState createState() => _TextLoginState();
-}
+class TextContent extends StatelessWidget {
+  String content;
 
-class _TextLoginState extends State<TextLogin> {
+
+  TextContent({this.content});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +21,7 @@ class _TextLoginState extends State<TextLogin> {
             ),
             Center(
               child: Text(
-                'Hesabını oluşturduysan hızlıca giriş yap.',
+                content,
                 style: TextStyle(
                   fontSize: 24,
                   color: Colors.white,

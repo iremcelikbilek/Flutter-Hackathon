@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hackathon/widgets/loginWidgets/buttonLogin.dart';
-import 'package:flutter_hackathon/widgets/loginWidgets/firstTime.dart';
-import 'package:flutter_hackathon/widgets/loginWidgets/inputPassword.dart';
-import 'package:flutter_hackathon/widgets/loginWidgets/inputUsername.dart';
-import 'package:flutter_hackathon/widgets/loginWidgets/textLogin.dart';
-import 'package:flutter_hackathon/widgets/loginWidgets/verticalTextLogin.dart';
+import 'package:flutter_hackathon/widgets/common/buttons.dart';
+import 'package:flutter_hackathon/widgets/common/footer.dart';
+import 'package:flutter_hackathon/widgets/common/inputs.dart';
+import 'package:flutter_hackathon/widgets/common/textContent.dart';
+import 'package:flutter_hackathon/widgets/common/textVertical.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController txtUsername = TextEditingController();
+  final TextEditingController txtMail = TextEditingController();
   final TextEditingController txtPassword = TextEditingController();
 
   @override
@@ -30,13 +29,13 @@ class _LoginPageState extends State<LoginPage> {
             Column(
               children: <Widget>[
                 Row(children: <Widget>[
-                  VerticalTextLogin(),
-                  TextLogin(),
+                  TextVertical(verticalText: "Giriş Yap"),
+                  TextContent(content: "Hesabını oluşturduysan hızlıca giriş yap."),
                 ]),
-                InputUsername(txtUsername),
-                InputPassword(txtPassword),
-                ButtonLogin(txtUsername, txtPassword),
-                FirstTime(),
+                Input(txtController: txtMail,labelText: "Kullanıcı E-Posta",isObsure: false),
+                Input(txtController: txtPassword,labelText: "Şifre",isObsure: true),
+                Button(buttonText: "Giriş",shadowColor: Colors.green[300],),
+                Footer(buttonText: "Kaydol",infoText: 'Hesabın yok mu?')
               ],
             ),
           ],
