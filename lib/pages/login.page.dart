@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextContent(
                       content: "Hesabını oluşturduysan hızlıca giriş yap."),
                 ]),
-<<<<<<< HEAD
+
                 Input(txtController: txtMail,labelText: "Kullanıcı E-Posta",isObsure: false),
                 Input(txtController: txtPassword,labelText: "Şifre",isObsure: true),
                 Button(
@@ -53,21 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                       await rooter.navigateTo(RegisterPage());
                       },
                 ),
-=======
-                Input(
-                    txtController: txtMail,
-                    labelText: "Kullanıcı E-Posta",
-                    isObsure: false),
-                Input(
-                    txtController: txtPassword,
-                    labelText: "Şifre",
-                    isObsure: true),
-                Button(
-                  buttonText: "Giriş",
-                  shadowColor: Colors.green[300],
-                ),
-                Footer(buttonText: "Kaydol", infoText: 'Hesabın yok mu?')
->>>>>>> 1cf121e55a573915357b3bbe903378538e1412d7
+
               ],
             ),
           ],
