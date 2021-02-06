@@ -6,6 +6,8 @@ class User {
   String phone;
   String password;
   String districtID;
+  String token;
+  String userType;
 
   User.forRegister(this.name, this.surname, this.mail, this.phone,
       this.password, this.districtID);
@@ -22,4 +24,6 @@ class User {
       "districtID": districtID
     };
   }
+
+
 }
