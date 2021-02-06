@@ -13,7 +13,7 @@ class LandingPage extends StatelessWidget {
     final _authViewModel = Provider.of<AuthViewModel>(context);
 
     if(_authViewModel.viewState == ViewState.Idle){
-      if(_authViewModel.user == null){
+      if(_authViewModel.user.token == null){
         return LoginPage();
       }else if(_authViewModel.user.userType == "community"){
         return CommunityMainPage();
@@ -23,6 +23,8 @@ class LandingPage extends StatelessWidget {
 
       }else if(_authViewModel.user.userType == "provinceManager"){
         return ProvinceManagerMainPage();
+      }else{
+        return CommunityMainPage();
       }
 
     }else{

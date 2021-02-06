@@ -41,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                       content: "Hesabını oluşturduysan hızlıca giriş yap."),
                 ]),
                 Input(
+                  textInputType: TextInputType.emailAddress,
                     txtController: txtMail,
                     labelText: "Kullanıcı E-Posta",
                     isObsure: false),
@@ -54,7 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: () {
                     var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
                     authViewModel.signIn(txtMail.text, txtPassword.text);
-                    if(authViewModel.token != null){
+                    if(authViewModel.user.token != null){
+                      print("gelen token : ${authViewModel.user.token}");
                       rooter.navigatePopUntil();
                     }
                   },

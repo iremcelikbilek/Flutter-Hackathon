@@ -49,11 +49,11 @@ class Register4 extends StatelessWidget {
                 Button(
                   buttonText: "Kaydol",
                   shadowColor: Colors.deepPurple[300],
-                  onTap: () {
+                  onTap: () async{
                     var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
                     user.districtID = "İzmir";
-                    authViewModel.signUp(user.toJsonRegister());
-                    if(authViewModel.token != null){
+                    await authViewModel.signUp(user.toJsonRegister());
+                    if(authViewModel.user.token != null){
                       rooter.navigatePopUntil();
                     }
                   }, // Ana sayfaya aktarma

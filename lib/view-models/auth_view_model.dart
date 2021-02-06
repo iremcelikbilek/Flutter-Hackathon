@@ -9,8 +9,7 @@ class AuthViewModel with ChangeNotifier{
 
   ViewState _viewState = ViewState.Idle;
   UserServices userServices = locator<UserServices>();
-  String token;
-  User user;
+  User user = User();
 
   ViewState get viewState => _viewState;
 
@@ -22,7 +21,9 @@ class AuthViewModel with ChangeNotifier{
   Future<User> signUp(Map body) async{
     viewState = ViewState.Busy;
     var map = await userServices.signUp(body);
+    print("user view model1 ${map["token"]}");
     user.token = map["token"];
+    print("user view model ${user.token}");
     user.userType = map["user"]["type"];
     viewState = ViewState.Idle;
     return user;
@@ -31,7 +32,9 @@ class AuthViewModel with ChangeNotifier{
   Future<User> signIn(String mail, String password) async{
     viewState = ViewState.Busy;
     Map<String, dynamic> map = await userServices.signIn(mail, password);
+    print("user view model1 ${map["token"]}");
     user.token = map["token"];
+    print("user view model ${user.token}");
     user.userType = map["user"]["type"];
     viewState = ViewState.Idle;
     return user;

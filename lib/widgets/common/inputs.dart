@@ -22,7 +22,7 @@ class Input extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
           ),
-          obscureText: true,
+          obscureText: isObsure,
           decoration: InputDecoration(
             border: InputBorder.none,
             labelText: labelText,
