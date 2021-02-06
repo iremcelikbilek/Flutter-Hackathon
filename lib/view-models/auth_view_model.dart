@@ -10,6 +10,7 @@ class AuthViewModel with ChangeNotifier{
   ViewState _viewState = ViewState.Idle;
   UserServices userServices = locator<UserServices>();
   User user = User();
+  String errorTextMessage1,errorTextMessage2;
 
   ViewState get viewState => _viewState;
 
@@ -21,10 +22,8 @@ class AuthViewModel with ChangeNotifier{
   Future<User> signUp(Map body) async{
     viewState = ViewState.Busy;
     var map = await userServices.signUp(body);
-    print("user view model1 ${map["token"]}");
     user.token = map["token"];
-    print("user view model ${user.token}");
-    user.userType = map["user"]["type"];
+    user.userType = map["type"];
     viewState = ViewState.Idle;
     return user;
   }
@@ -32,10 +31,12 @@ class AuthViewModel with ChangeNotifier{
   Future<User> signIn(String mail, String password) async{
     viewState = ViewState.Busy;
     Map<String, dynamic> map = await userServices.signIn(mail, password);
-    print("user view model1 ${map["token"]}");
+    if(map["reason"] == "Unauthorized"){
+      errorTextMessage1 = "Bilgileriniz yanlış";
+      errorTextMessage2 = "Bilgileriniz yanlış";
+    }
     user.token = map["token"];
-    print("user view model ${user.token}");
-    user.userType = map["user"]["type"];
+    user.userType = map["type"];
     viewState = ViewState.Idle;
     return user;
   }

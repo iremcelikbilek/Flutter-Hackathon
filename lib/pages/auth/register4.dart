@@ -51,7 +51,7 @@ class Register4 extends StatelessWidget {
                   shadowColor: Colors.deepPurple[300],
                   onTap: () async{
                     var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
-                    user.districtID = "İzmir";
+                    user.districtID = 755;
                     await authViewModel.signUp(user.toJsonRegister());
                     if(authViewModel.user.token != null){
                       rooter.navigatePopUntil();

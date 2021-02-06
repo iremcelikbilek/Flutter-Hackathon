@@ -5,9 +5,10 @@ class Input extends StatelessWidget {
   String labelText;
   bool isObsure;
   TextInputType textInputType;
+  String errorText;
 
   Input(
-      {this.txtController, this.labelText, this.isObsure, this.textInputType});
+      {this.txtController, this.labelText, this.isObsure, this.textInputType,this.errorText});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,7 @@ class Input extends StatelessWidget {
           ),
           obscureText: isObsure,
           decoration: InputDecoration(
+            errorText: errorText,
             border: InputBorder.none,
             labelText: labelText,
             labelStyle: TextStyle(

@@ -5,7 +5,7 @@ class User {
   String mail;
   String phone;
   String password;
-  String districtID;
+  int districtID;
   String token;
   String userType;
 
@@ -21,7 +21,7 @@ class User {
       "mail": mail,
       "phone": phone,
       "password": password,
-      "districtID": districtID
+      "locationID": districtID
     };
   }
 

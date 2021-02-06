@@ -22,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     var rooter = locator<Rooter>();
+    var authViewModel = Provider.of<AuthViewModel>(context);
 
     return Scaffold(
       body: Container(
@@ -44,11 +45,15 @@ class _LoginPageState extends State<LoginPage> {
                   textInputType: TextInputType.emailAddress,
                     txtController: txtMail,
                     labelText: "Kullanıcı E-Posta",
-                    isObsure: false),
+                    isObsure: false,
+                  errorText: (authViewModel.errorTextMessage1 != null) ? authViewModel.errorTextMessage1 : null,
+                ),
                 Input(
                     txtController: txtPassword,
                     labelText: "Şifre",
-                    isObsure: true),
+                    isObsure: true,
+                    errorText: (authViewModel.errorTextMessage1 != null) ? authViewModel.errorTextMessage1 : null,
+                ),
                 Button(
                   buttonText: "Giriş",
                   shadowColor: Colors.green[300],
