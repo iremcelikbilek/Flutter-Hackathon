@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/locator.dart';
+import 'package:flutter_hackathon/models/user.dart';
+import 'package:flutter_hackathon/utils/rooter.dart';
+import 'package:flutter_hackathon/view-models/auth_view_model.dart';
 import 'package:flutter_hackathon/widgets/common/buttons.dart';
 import 'package:flutter_hackathon/widgets/common/inputs.dart';
 import 'package:flutter_hackathon/widgets/common/textContent.dart';
 import 'package:flutter_hackathon/widgets/common/textVertical.dart';
+import 'package:provider/provider.dart';
 
 class Register4 extends StatelessWidget {
   final TextEditingController txtName = TextEditingController();
-  final TextEditingController txtLastName = TextEditingController();
+  final TextEditingController txtProvinceId = TextEditingController();
+
+  User user;
+  Register4(this.user);
 
   @override
   Widget build(BuildContext context) {
+    var rooter = locator<Rooter>();
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -40,7 +49,14 @@ class Register4 extends StatelessWidget {
                 Button(
                   buttonText: "Kaydol",
                   shadowColor: Colors.deepPurple[300],
-                  onTap: () {}, // Ana sayfaya aktarma
+                  onTap: () {
+                    var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
+                    user.districtID = "İzmir";
+                    authViewModel.signUp(user.toJsonRegister());
+                    if(authViewModel.token != null){
+                      rooter.navigatePopUntil();
+                    }
+                  }, // Ana sayfaya aktarma
                 ),
               ],
             ),

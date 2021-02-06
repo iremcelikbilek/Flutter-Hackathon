@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
+import 'package:flutter_hackathon/models/user.dart';
 import 'package:flutter_hackathon/pages/auth/register3.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
 import 'package:flutter_hackathon/widgets/common/buttons.dart';
@@ -8,8 +9,11 @@ import 'package:flutter_hackathon/widgets/common/textContent.dart';
 import 'package:flutter_hackathon/widgets/common/textVertical.dart';
 
 class Register2 extends StatelessWidget {
-  final TextEditingController txtName = TextEditingController();
-  final TextEditingController txtLastName = TextEditingController();
+  final TextEditingController txtEmail = TextEditingController();
+  final TextEditingController txtPhone = TextEditingController();
+
+  User user;
+  Register2(this.user);
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +37,11 @@ class Register2 extends StatelessWidget {
                   ],
                 ),
                 Input(
-                    txtController: txtName,
+                    txtController: txtEmail,
                     labelText: "E-Posta",
                     isObsure: false),
                 Input(
-                  txtController: txtLastName,
+                  txtController: txtPhone,
                   labelText: "Telefon",
                   isObsure: false,
                   textInputType: TextInputType.phone,
@@ -45,7 +49,11 @@ class Register2 extends StatelessWidget {
                 Button(
                   buttonText: "İleri",
                   shadowColor: Colors.deepPurple[300],
-                  onTap: () => rooter.navigateTo(Register3()),
+                  onTap: () {
+                    user.mail = txtEmail.text;
+                    user.phone = txtPhone.text;
+                    rooter.navigateTo(Register3(user));
+                    },
                 ),
               ],
             ),

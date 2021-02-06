@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
+import 'package:flutter_hackathon/view-models/auth_view_model.dart';
+import 'package:provider/provider.dart';
 import 'register.page.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
 import 'package:flutter_hackathon/widgets/common/buttons.dart';
@@ -49,7 +51,13 @@ class _LoginPageState extends State<LoginPage> {
                 Button(
                   buttonText: "Giriş",
                   shadowColor: Colors.green[300],
-                  onTap: () {}, // HOME Page yönlendirme kısmı
+                  onTap: () {
+                    var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
+                    authViewModel.signIn(txtMail.text, txtPassword.text);
+                    if(authViewModel.token != null){
+                      rooter.navigatePopUntil();
+                    }
+                  },
                 ),
                 Footer(
                   buttonText: "Kaydol",

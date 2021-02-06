@@ -14,4 +14,8 @@ class Rooter {
     return _navigatorKey.currentState.pushReplacement(
         MaterialPageRoute(builder: (BuildContext context) => route));
   }
+
+  void navigatePopUntil() {
+    return _navigatorKey.currentState.popUntil(ModalRoute.withName("/"));
+  }
 }

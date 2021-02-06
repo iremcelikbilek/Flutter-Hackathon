@@ -9,8 +9,8 @@ class User {
   String token;
   String userType;
 
-  User.forRegister(this.name, this.surname, this.mail, this.phone,
-      this.password, this.districtID);
+  User.forRegister({this.name, this.surname, this.mail, this.phone,
+      this.password, this.districtID});
   User.forLogin(this.mail, this.password);
   User();
 

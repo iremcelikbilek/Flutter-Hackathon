@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
+import 'package:flutter_hackathon/models/user.dart';
 import 'package:flutter_hackathon/pages/auth/login.page.dart';
 import 'package:flutter_hackathon/pages/auth/register2.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
@@ -17,6 +18,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController txtName = TextEditingController();
   final TextEditingController txtLastName = TextEditingController();
+  User user;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 Button(
                   buttonText: "İleri",
                   shadowColor: Colors.deepPurple[300],
-                  onTap: () async => await rooter.navigateTo(Register2()),
+                  onTap: () async {
+                    user = User.forRegister(name: txtName.text,surname: txtLastName.text);
+                    await rooter.navigateTo(Register2(user));
+                    },
                 ),
                 Footer(
                   buttonText: 'Giriş Yap',

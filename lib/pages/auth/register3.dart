@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
+import 'package:flutter_hackathon/models/user.dart';
 import 'package:flutter_hackathon/pages/auth/register4.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
 import 'package:flutter_hackathon/widgets/common/buttons.dart';
@@ -8,8 +9,10 @@ import 'package:flutter_hackathon/widgets/common/textContent.dart';
 import 'package:flutter_hackathon/widgets/common/textVertical.dart';
 
 class Register3 extends StatelessWidget {
-  final TextEditingController txtName = TextEditingController();
-  final TextEditingController txtLastName = TextEditingController();
+  final TextEditingController txtPassword = TextEditingController();
+  final TextEditingController txtPasswordAgain = TextEditingController();
+  User user;
+  Register3(this.user);
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +36,9 @@ class Register3 extends StatelessWidget {
                   ],
                 ),
                 Input(
-                    txtController: txtName, labelText: "Şifre", isObsure: true),
+                    txtController: txtPassword, labelText: "Şifre", isObsure: true),
                 Input(
-                  txtController: txtLastName,
+                  txtController: txtPasswordAgain,
                   labelText: "Şifre Tekrar",
                   isObsure: true,
                   textInputType: TextInputType.phone,
@@ -43,7 +46,10 @@ class Register3 extends StatelessWidget {
                 Button(
                   buttonText: "İleri",
                   shadowColor: Colors.deepPurple[300],
-                  onTap: () async => await rooter.navigateTo(Register4()),
+                  onTap: () async{
+                    user.password = txtPassword.text;
+                    await rooter.navigateTo(Register4(user));
+                    },
                 ),
               ],
             ),
