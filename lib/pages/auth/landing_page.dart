@@ -29,7 +29,7 @@ class LandingPage extends StatelessWidget {
 
     }else{
       return Scaffold(
-        appBar: AppBar(title: Text("Hoşgeldiniz"),),
+        appBar: AppBar(title: Text("Lütfen Bekleyin"),),
         body: Center(child: CircularProgressIndicator()),
       );
     }
