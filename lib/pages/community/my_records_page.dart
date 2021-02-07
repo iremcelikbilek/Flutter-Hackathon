@@ -5,9 +5,15 @@ import 'package:flutter_hackathon/pages/community/add_records_page.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
 import 'package:flutter_hackathon/view-models/auth_view_model.dart';
 import 'package:flutter_hackathon/view-models/record_view-model.dart';
+import 'package:flutter_hackathon/widgets/common/card_widget.dart';
 import 'package:provider/provider.dart';
 
-class MyRecordsPage extends StatelessWidget {
+class MyRecordsPage extends StatefulWidget {
+  @override
+  _MyRecordsPageState createState() => _MyRecordsPageState();
+}
+
+class _MyRecordsPageState extends State<MyRecordsPage> {
   @override
   Widget build(BuildContext context) {
     var rooter = locator<Rooter>();
@@ -23,6 +29,7 @@ class MyRecordsPage extends StatelessWidget {
           onPressed: () async => await rooter.navigateToFullScreenDialog(ChangeNotifierProvider(
             create: (context) => RecordViewModel(),
               child: AddRecordsPage())).then((value){
+                setState(() {});
                 scaffoldkey.currentState.showSnackBar(SnackBar(content: Text("İlan ekleme başarılı")));
           }),
           child: Icon(Icons.add),
@@ -48,9 +55,12 @@ class MyRecordsPage extends StatelessWidget {
             if(myRecordList.length <= 0){
               return Center(child: Text("Henüz Kaydınız Bulunmamaktadır."),);
             }else{
-              return ListTile(
-                title: Text(myRecordList[index].title),
-                subtitle: Text(myRecordList[index].body),
+              return CardWidget(
+                title: myRecordList[index].title,
+                body: myRecordList[index].body,
+                recordsType: myRecordList[index].recordType,
+                domainName: myRecordList[index].recordDomainName,
+                status: myRecordList[index],
               );
             }
 
