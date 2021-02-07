@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class LocationServices {
-  Future<Map> getCityList() async {
+  Future<List> getCityList() async {
     final http.Response response = await http.get(
         'https://flutterappserver.herokuapp.com/location/cityList',
         headers: <String, String>{

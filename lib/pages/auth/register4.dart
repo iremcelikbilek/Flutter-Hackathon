@@ -20,12 +20,29 @@ class Register4 extends StatefulWidget {
 
 class _Register4State extends State<Register4> {
   final TextEditingController txtName = TextEditingController();
-  LocationServices _locationServices = locator<LocationServices>();
   final TextEditingController txtProvinceId = TextEditingController();
+  List cityList = List();
+  int cityId;
+
+  @override
+  void initState() {
+    super.initState();
+    getCityList();
+
+  }
+
+  Future<List> getCityList() async{
+    var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
+    cityList = await authViewModel.getCityList();
+    print(cityList);
+    return cityList;
+  }
 
   @override
   Widget build(BuildContext context) {
     var rooter = locator<Rooter>();
+    var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -43,6 +60,29 @@ class _Register4State extends State<Register4> {
                     TextVertical(verticalText: "Kaydol"),
                     TextContent(content: "Adım 4 : Konum Bilgisi"),
                   ],
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(color: Colors.white),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      items: cityList.map((cityList){
+                        return DropdownMenuItem<int>(
+                          value: cityList["id"],
+                          child: Text(cityList["city_name"].toUpperCase(),style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 16),),
+                        );
+                      }).toList(),
+                      value: cityId,
+                      onChanged: (changedId){
+                        setState(() {
+                          cityId = changedId;
+                        });
+                      },
+                    ),
+                  ),
                 ),
                 Button(
                   buttonText: "Kaydol",
