@@ -60,15 +60,13 @@ class _MyRecordsPageState extends State<MyRecordsPage> {
                 body: myRecordList[index].body,
                 recordsType: myRecordList[index].recordType,
                 domainName: myRecordList[index].recordDomainName,
-                status: myRecordList[index],
+                status: myRecordList[index].status,
               );
             }
 
           },
         );
         }
-
-
       },
     );
   }

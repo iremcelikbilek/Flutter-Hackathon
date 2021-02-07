@@ -18,10 +18,10 @@ class LandingPage extends StatelessWidget {
       }else if(_authViewModel.user.userType == "USER"){
         return CommunityMainPage();
 
-      }else if(_authViewModel.user.userType == "districtManager"){
+      }else if(_authViewModel.user.userType == "MANAGER"){
         return DistrictManagerMainPage();
 
-      }else if(_authViewModel.user.userType == "provinceManager"){
+      }else if(_authViewModel.user.userType == "SUPERMANAGER"){
         return ProvinceManagerMainPage();
       }else{
         return CommunityMainPage();

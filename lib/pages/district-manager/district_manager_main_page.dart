@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/api/recordServices.dart';
 import 'package:flutter_hackathon/pages/district-manager/approve_page.dart';
 import 'package:flutter_hackathon/pages/district-manager/navigation-bar/district_tab_items.dart';
 import 'package:flutter_hackathon/pages/district-manager/navigation-bar/my_navigation_bar.dart';
 import 'package:flutter_hackathon/pages/district-manager/records_page.dart';
+import 'package:flutter_hackathon/view-models/record_view-model.dart';
+import 'package:provider/provider.dart';
 
 class DistrictManagerMainPage extends StatefulWidget {
   @override
@@ -14,7 +17,10 @@ class _DistrictManagerMainPageState extends State<DistrictManagerMainPage> {
 
   Map<DistrictTabItem, Widget> allPages() {
     return {
-      DistrictTabItem.Records:  RecordsPage(),
+      DistrictTabItem.Records:  ChangeNotifierProvider(
+        create: (context) => RecordViewModel(),
+        child: RecordsPage(),
+      ),
       DistrictTabItem.Approve: ApprovePage(),
     };
   }

@@ -18,8 +18,7 @@ class DashboardServices {
     }
   }
 
-  Future<Map> filterStatus(
-      String token, String filter, String filterKey) async {
+  Future<Map> filterStatus(String token, String filter, String filterKey) async {
     final http.Response response = await http.get(
         'https://flutterappserver.herokuapp.com/' + filter + '/' + filterKey,
         headers: <String, String>{

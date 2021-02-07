@@ -16,7 +16,10 @@ class _CommunityMainPageState extends State<CommunityMainPage> {
   TabItem _currentTab = TabItem.Home;
   Map<TabItem, Widget> allPages() {
     return {
-      TabItem.Home:  AllRecordsPage(),
+      TabItem.Home:  ChangeNotifierProvider(
+        create: (context) => RecordViewModel(),
+        child: AllRecordsPage(),
+      ),
       TabItem.Notification: NotificationPage(),
       TabItem.MyRecords : ChangeNotifierProvider(
         create: (context) => RecordViewModel(),
