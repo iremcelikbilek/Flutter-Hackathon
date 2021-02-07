@@ -16,8 +16,8 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
   List<Step> allSteps;
   String message;
   bool error = false;
-  var key0 = GlobalKey<FormFieldState>();
-  var key1 = GlobalKey<FormFieldState>();
+  //var key0 = GlobalKey<FormFieldState>();
+  //var key1 = GlobalKey<FormFieldState>();
   var key2 = GlobalKey<FormFieldState>();
   var key3 = GlobalKey<FormFieldState>();
   List<GlobalKey<FormFieldState>> keys;
@@ -25,7 +25,7 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
   @override
   void initState() {
     super.initState();
-    keys = [key0, key1, key2, key3];
+    keys = [ key2, key3];
   }
 
   @override
@@ -45,11 +45,6 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
       child: Stepper(
         steps: allSteps,
         currentStep: _activeStep,
-        /*onStepTapped: (tappedStep){
-          setState(() {
-            _activeStep = tappedStep;
-          });
-        },*/
         onStepContinue: () {
           setState(() {
             buttonControl(_activeStep);
@@ -74,7 +69,7 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
         subtitle: Text("Lütfen kayıt türünü giriniz."),
         state: adjustState(0),
         isActive: true,
-        content: Row(
+        content: Column(
           children: [
             RadioListTile<RecordsType>(
               secondary: Icon(Icons.wb_incandescent_sharp),
@@ -106,21 +101,33 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
         subtitle: Text("Lütfen alan adını giriniz"),
         state: adjustState(1),
         isActive: true,
-        content: DropdownButtonHideUnderline(
-          child: DropdownButton(
-            items: allDomainName.map((domainName){
-              return DropdownMenuItem<String>(
-                value: domainName,
-                child: Text(domainName.toUpperCase(),style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 16),),
-              );
-            }).toList(),
-            value: domainName,
-            onChanged: (changedDomain){
-              setState(() {
-                domainName = changedDomain;
-              });
-            },
-          ),
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                border: Border.all(color: Colors.black),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  items: allDomainName.map((domainName){
+                    return DropdownMenuItem<String>(
+                      value: domainName,
+                      child: Text(domainName.toUpperCase(),style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 16),),
+                    );
+                  }).toList(),
+                  value: domainName,
+                  onChanged: (changedDomain){
+                    setState(() {
+                      domainName = changedDomain;
+                    });
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       Step(
@@ -152,7 +159,7 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
         state: adjustState(3),
         isActive: true,
         content: TextFormField(
-          key: key2,
+          key: key3,
           validator: (enteredValue) {
             if (enteredValue.length < 6)
               return "En az 6 karakter giriniz.";
@@ -186,12 +193,17 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
   }
 
   void buttonControl(int activeStep) {
-    if (keys[activeStep].currentState.validate() && activeStep != 0 && activeStep != 1) {
-      keys[activeStep].currentState.save();
+    if(activeStep < 2){
       error = false;
       if (activeStep < allSteps.length - 1) _activeStep++;
-    } else {
-      error = true;
+    }else{
+      if (keys[activeStep].currentState.validate()) {
+        keys[activeStep].currentState.save();
+        error = false;
+        if (activeStep < allSteps.length - 1) _activeStep++;
+      } else {
+        error = true;
+      }
     }
   }
 }

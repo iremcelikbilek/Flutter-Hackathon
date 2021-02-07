@@ -30,14 +30,21 @@ class AuthViewModel with ChangeNotifier{
 
   Future<User> signIn(String mail, String password) async{
     viewState = ViewState.Busy;
-    Map<String, dynamic> map = await userServices.signIn(mail, password);
-    if(map["reason"] == "Unauthorized"){
-      errorTextMessage1 = "Bilgileriniz yanlış";
-      errorTextMessage2 = "Bilgileriniz yanlış";
+    Map<String, dynamic> map;
+    try{
+      Map<String, dynamic> map = await userServices.signIn(mail, password);
+      user.token = map["token"];
+      user.userType = map["type"];
+    }catch(e){
+      print("hata auth view model sign in $e");
+      if(map["reason"] == "Unauthorized"){
+        errorTextMessage1 = "Bilgileriniz yanlış";
+        errorTextMessage2 = "Bilgileriniz yanlış";
+      }
+    }finally{
+      viewState = ViewState.Idle;
     }
-    user.token = map["token"];
-    user.userType = map["type"];
-    viewState = ViewState.Idle;
+
     return user;
   }
 
