@@ -6,6 +6,7 @@ class Record {
   String userID;
   String recordType;
   String recordDomainName;
+  String status;
 
   Record.forAdd(this.title, this.body, this.recordType, this.recordDomainName);
 
@@ -24,5 +25,6 @@ class Record {
       title = map["title"],
       body = map["body"],
       recordDomainName = map["domain"],
-      recordType = map["record_type"];
+      recordType = map["record_type"],
+      status = map["status"];
 }
