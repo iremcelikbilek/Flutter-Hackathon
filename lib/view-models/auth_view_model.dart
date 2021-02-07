@@ -10,8 +10,8 @@ class AuthViewModel with ChangeNotifier{
   ViewState _viewState = ViewState.Idle;
   UserServices userServices = locator<UserServices>();
   User user = User();
-  String errorTextMessage1, errorTextMessage2;
-  
+  String errorTextMessage1,errorTextMessage2;
+
   ViewState get viewState => _viewState;
 
   set viewState(ViewState value) {
@@ -35,6 +35,8 @@ class AuthViewModel with ChangeNotifier{
       Map<String, dynamic> map = await userServices.signIn(mail, password);
       user.token = map["token"];
       user.userType = map["type"];
+      errorTextMessage1 = null;
+      errorTextMessage2 = null;
     }catch(e){
       print("hata auth view model sign in $e");
       if(map == null){
