@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/api/recordServices.dart';
-import 'package:flutter_hackathon/pages/district-manager/approve_page.dart';
+import 'package:flutter_hackathon/pages/district-manager/stats_page.dart';
 import 'package:flutter_hackathon/pages/district-manager/navigation-bar/district_tab_items.dart';
 import 'package:flutter_hackathon/pages/district-manager/navigation-bar/my_navigation_bar.dart';
 import 'package:flutter_hackathon/pages/district-manager/records_page.dart';
+import 'package:flutter_hackathon/view-models/manager_view_model.dart';
 import 'package:flutter_hackathon/view-models/record_view-model.dart';
 import 'package:provider/provider.dart';
 
@@ -17,11 +18,21 @@ class _DistrictManagerMainPageState extends State<DistrictManagerMainPage> {
 
   Map<DistrictTabItem, Widget> allPages() {
     return {
-      DistrictTabItem.Records:  ChangeNotifierProvider(
-        create: (context) => RecordViewModel(),
+      DistrictTabItem.Records:  MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => RecordViewModel(),),
+          ChangeNotifierProvider(create: (context) => ManagerViewModel(),),
+        ],
+
         child: RecordsPage(),
       ),
-      DistrictTabItem.Approve: ApprovePage(),
+      DistrictTabItem.Approve: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => RecordViewModel(),),
+          ChangeNotifierProvider(create: (context) => ManagerViewModel(),),
+        ],
+        child: StatsPage(),
+      ),
     };
   }
 

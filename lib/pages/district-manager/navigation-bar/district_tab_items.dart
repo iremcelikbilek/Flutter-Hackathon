@@ -11,6 +11,6 @@ class TabItemData {
 
   static Map<DistrictTabItem, TabItemData> allTabs = {
     DistrictTabItem.Records : TabItemData("Ana Sayfa", Icons.article),
-    DistrictTabItem.Approve : TabItemData("Duyurular", Icons.check),
+    DistrictTabItem.Approve : TabItemData("İstatistik", Icons.stacked_bar_chart),
   };
 }

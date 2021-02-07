@@ -8,7 +8,18 @@ class ManagerViewModel with ChangeNotifier{
   DashboardServices _dashboardServices = locator<DashboardServices>();
 
 
-  Future<Map> answer(String token, String recordId, String answer, String status) async {
-    await _managerServices.answer(token, recordId, answer, status);
+  Future<bool> answer(String token, int recordId, String answer, String status) async {
+    try{
+      await _managerServices.answer(token, recordId, answer, status);
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  Future<List<int>> details(String token) async {
+    List<int> statsList = await _dashboardServices.details(token);
+    print("manager view model : $statsList");
+    return statsList;
   }
 }
