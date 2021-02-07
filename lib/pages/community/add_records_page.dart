@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/locator.dart';
+import 'package:flutter_hackathon/models/record.dart';
+import 'package:flutter_hackathon/pages/community/my_records_page.dart';
+import 'package:flutter_hackathon/utils/rooter.dart';
+import 'package:flutter_hackathon/view-models/auth_view_model.dart';
+import 'package:flutter_hackathon/view-models/record_view-model.dart';
+import 'package:provider/provider.dart';
 
 enum RecordsType {Wish, Complaint}
 
@@ -12,27 +19,31 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
   List<String> allDomainName = ["elektrik", "parkVeBahceler", "ulasim", "temizlik", "altyapi"];
   int _activeStep = 0;
   RecordsType recordsType = RecordsType.Wish;
-  String domainName, title, body;
+  String domainName, title, body, recordType;
   List<Step> allSteps;
   String message;
+  int count = 0;
   bool error = false;
-  //var key0 = GlobalKey<FormFieldState>();
-  //var key1 = GlobalKey<FormFieldState>();
+  var key0 = GlobalKey<FormFieldState>();
+  var key1 = GlobalKey<FormFieldState>();
   var key2 = GlobalKey<FormFieldState>();
   var key3 = GlobalKey<FormFieldState>();
   List<GlobalKey<FormFieldState>> keys;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    keys = [ key2, key3];
+    keys = [key0,key1,key2, key3];
   }
 
   @override
   Widget build(BuildContext context) {
     allSteps = _allSteps();
+    //var recordViewModel = Provider.of<RecordViewModel>(context);
 
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text("Dilek/Şikayet Ekle"),
       ),
@@ -41,14 +52,31 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
   }
 
   Widget buildBody(BuildContext context) {
+    
     return SingleChildScrollView(
       child: Stepper(
         steps: allSteps,
         currentStep: _activeStep,
-        onStepContinue: () {
-          setState(() {
+        onStepContinue: () async{
+          var recordViewModel = Provider.of<RecordViewModel>(context,listen: false);
+          var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
+          var rooter = locator<Rooter>();
+          print("active step : $_activeStep");
+          setState((){
             buttonControl(_activeStep);
+            count++;
           });
+
+          if(count == 4){
+            Record record = Record.forAdd(title, body, recordType, domainName);
+            bool result = await recordViewModel.addRecord(record.toJsonAdd(), authViewModel.user.token);
+            if(result){
+              print("İşlem tamamlandı");
+            }
+            Navigator.of(context).pop();
+          }
+
+
         },
         onStepCancel: () {
           if (_activeStep > 0) {
@@ -79,6 +107,11 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
               onChanged: (recordsType){
                 setState(() {
                   this.recordsType = recordsType;
+                  if(recordsType == RecordsType.Wish){
+                    recordType = "wish";
+                  }else{
+                    recordType = "complaint";
+                  }
                 });
               },
             ),
@@ -90,6 +123,11 @@ class _AddRecordsPageState extends State<AddRecordsPage> {
               onChanged: (recordsType){
                 setState(() {
                   this.recordsType = recordsType;
+                  if(recordsType == RecordsType.Wish){
+                    recordType = "wish";
+                  }else{
+                    recordType = "complaint";
+                  }
                 });
               },
             ),

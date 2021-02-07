@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hackathon/locator.dart';
 import 'package:flutter_hackathon/pages/community/add_records_page.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
+import 'package:flutter_hackathon/view-models/record_view-model.dart';
+import 'package:provider/provider.dart';
 
 class MyRecordsPage extends StatelessWidget {
   @override
@@ -14,7 +16,9 @@ class MyRecordsPage extends StatelessWidget {
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 50, right: 10),
         child: FloatingActionButton(
-          onPressed: () async => await rooter.navigateToFullScreenDialog(AddRecordsPage()),
+          onPressed: () async => await rooter.navigateToFullScreenDialog(ChangeNotifierProvider(
+            create: (context) => RecordViewModel(),
+              child: AddRecordsPage())),
           child: Icon(Icons.add),
           tooltip: "Yeni kayıt ekle.",
         ),

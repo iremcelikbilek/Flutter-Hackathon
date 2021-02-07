@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class UserServices {
+class RecordServices {
   Future<Map> addRecord(Map body, String token) async {
     print(body.toString());
     final http.Response response =
@@ -20,7 +20,7 @@ class UserServices {
     }
   }
 
-  Future<Map> myRecordList(String token) async {
+  Future<List<Map<String,dynamic>>> myRecordList(String token) async {
     final http.Response response = await http.get(
         'https://flutterappserver.herokuapp.com/user/records',
         headers: <String, String>{
@@ -36,7 +36,7 @@ class UserServices {
     }
   }
 
-  Future<Map> districtRecordList(String token) async {
+  Future<List<Map<String,dynamic>>> districtRecordList(String token) async {
     final http.Response response = await http.get(
         'https://flutterappserver.herokuapp.com/record/allFiltered',
         headers: <String, String>{

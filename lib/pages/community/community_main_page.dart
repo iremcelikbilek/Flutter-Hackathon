@@ -4,6 +4,8 @@ import 'package:flutter_hackathon/pages/community/my_records_page.dart';
 import 'package:flutter_hackathon/pages/community/navigation-bar/bottom_navigation_bar.dart';
 import 'package:flutter_hackathon/pages/community/navigation-bar/tab_items.dart';
 import 'package:flutter_hackathon/pages/community/notification_page.dart';
+import 'package:flutter_hackathon/view-models/record_view-model.dart';
+import 'package:provider/provider.dart';
 
 class CommunityMainPage extends StatefulWidget {
   @override
@@ -16,7 +18,10 @@ class _CommunityMainPageState extends State<CommunityMainPage> {
     return {
       TabItem.Home:  AllRecordsPage(),
       TabItem.Notification: NotificationPage(),
-      TabItem.MyRecords : MyRecordsPage(),
+      TabItem.MyRecords : ChangeNotifierProvider(
+        create: (context) => RecordViewModel(),
+        child: MyRecordsPage(),
+      ),
     };
   }
 
