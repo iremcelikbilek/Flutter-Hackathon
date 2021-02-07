@@ -26,5 +26,6 @@ class Record {
       body = map["body"],
       recordDomainName = map["domain"],
       recordType = map["record_type"],
-      status = map["status"];
+      status = map["status"],
+      id=map["id"];
 }
