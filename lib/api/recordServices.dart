@@ -20,7 +20,7 @@ class RecordServices {
     }
   }
 
-  Future<List<Map<String,dynamic>>> myRecordList(String token) async {
+  Future<List> myRecordList(String token) async {
     final http.Response response = await http.get(
         'https://flutterappserver.herokuapp.com/user/records',
         headers: <String, String>{
@@ -29,14 +29,13 @@ class RecordServices {
         });
     //print(response.body);
     if (response.statusCode == 200) {
-      print(jsonDecode(response.body));
       return (jsonDecode(response.body));
     } else {
       throw Exception('Failed My Record List.');
     }
   }
 
-  Future<List<Map<String,dynamic>>> districtRecordList(String token) async {
+  Future<List> districtRecordList(String token) async {
     final http.Response response = await http.get(
         'https://flutterappserver.herokuapp.com/record/allFiltered',
         headers: <String, String>{
