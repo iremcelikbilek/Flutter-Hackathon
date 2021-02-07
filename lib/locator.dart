@@ -1,4 +1,5 @@
 import 'package:flutter_hackathon/api/dashboardServices.dart';
+import 'package:flutter_hackathon/api/locationServices.dart';
 import 'package:flutter_hackathon/api/managerServices.dart';
 import 'package:flutter_hackathon/api/recordServices.dart';
 import 'package:flutter_hackathon/api/userServices.dart';
@@ -13,4 +14,5 @@ setUpLocators() {
   locator.registerLazySingleton(() => RecordServices());
   locator.registerLazySingleton(() => ManagerServices());
   locator.registerLazySingleton(() => DashboardServices());
+  locator.registerLazySingleton(() => LocationServices());
 }

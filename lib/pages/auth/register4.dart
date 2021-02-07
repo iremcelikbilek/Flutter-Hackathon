@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon/api/locationServices.dart';
 import 'package:flutter_hackathon/locator.dart';
 import 'package:flutter_hackathon/models/user.dart';
 import 'package:flutter_hackathon/utils/rooter.dart';
@@ -9,12 +10,18 @@ import 'package:flutter_hackathon/widgets/common/textContent.dart';
 import 'package:flutter_hackathon/widgets/common/textVertical.dart';
 import 'package:provider/provider.dart';
 
-class Register4 extends StatelessWidget {
-  final TextEditingController txtName = TextEditingController();
-  final TextEditingController txtProvinceId = TextEditingController();
-
+class Register4 extends StatefulWidget {
   User user;
   Register4(this.user);
+
+  @override
+  _Register4State createState() => _Register4State();
+}
+
+class _Register4State extends State<Register4> {
+  final TextEditingController txtName = TextEditingController();
+  LocationServices _locationServices = locator<LocationServices>();
+  final TextEditingController txtProvinceId = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,22 +44,13 @@ class Register4 extends StatelessWidget {
                     TextContent(content: "Adım 4 : Konum Bilgisi"),
                   ],
                 ),
-                Input(
-                    txtController: txtName,
-                    labelText: "Konum Bilgisi",
-                    isObsure: false),
-                Container(
-                  height: 50,
-                  width: 50,
-                  child: Text("Map"),
-                ),
                 Button(
                   buttonText: "Kaydol",
                   shadowColor: Colors.deepPurple[300],
                   onTap: () async{
                     var authViewModel = Provider.of<AuthViewModel>(context,listen: false);
-                    user.districtID = 755;
-                    await authViewModel.signUp(user.toJsonRegister());
+                    widget.user.districtID = 755;
+                    await authViewModel.signUp(widget.user.toJsonRegister());
                     if(authViewModel.user.token != null){
                       rooter.navigatePopUntil();
                     }
