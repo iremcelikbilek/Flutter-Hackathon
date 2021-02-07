@@ -9,8 +9,10 @@ class MyRecordsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var rooter = locator<Rooter>();
+    var scaffoldkey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
+      key: scaffoldkey,
       appBar: AppBar(title: Text("Kayıtlarım"),),
       body: Center(child: Text("BENİM KAYITLARIMIN LİSTESİ"),),
       floatingActionButton: Container(
@@ -18,7 +20,9 @@ class MyRecordsPage extends StatelessWidget {
         child: FloatingActionButton(
           onPressed: () async => await rooter.navigateToFullScreenDialog(ChangeNotifierProvider(
             create: (context) => RecordViewModel(),
-              child: AddRecordsPage())),
+              child: AddRecordsPage())).then((value){
+                scaffoldkey.currentState.showSnackBar(SnackBar(content: Text("İlan ekleme başarılı")));
+          }),
           child: Icon(Icons.add),
           tooltip: "Yeni kayıt ekle.",
         ),
