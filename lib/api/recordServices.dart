@@ -27,7 +27,7 @@ class RecordServices {
           'Content-Type': 'application/json; charset=UTF-8',
           'Authorization': 'Bearer ' + token,
         });
-    print(response.body);
+    //print(response.body);
     if (response.statusCode == 200) {
       print(jsonDecode(response.body));
       return (jsonDecode(response.body));
@@ -43,7 +43,7 @@ class RecordServices {
           'Content-Type': 'application/json; charset=UTF-8',
           'Authorization': 'Bearer ' + token,
         });
-    print(response.body);
+    //print(response.body);
     if (response.statusCode == 200) {
       print(jsonDecode(response.body));
       return (jsonDecode(response.body));
