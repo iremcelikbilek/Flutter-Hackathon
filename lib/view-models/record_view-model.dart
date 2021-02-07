@@ -19,9 +19,8 @@ class RecordViewModel with ChangeNotifier{
   Future<List<Record>> myRecordList(String token) async {
     List<Map<String, dynamic>> mapRecord = await _recordServices.myRecordList(token);
     List<Record> myRecords = List<Record>();
-    for(Map<String, dynamic> map in mapRecord){
-      myRecords.add(Record.fromJson(map));
-    }
+    for(int i=0; i< mapRecord.length; i++)
+    print("my record number : ${myRecords.length}");
     return myRecords;
   }
 
