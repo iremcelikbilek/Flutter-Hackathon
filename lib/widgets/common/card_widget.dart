@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class CardWidget extends StatefulWidget {
   String title, body, recordsType, domainName, status;
-  Widget widget;
+  Widget answerLayout;
 
-  CardWidget({this.title, this.body, this.recordsType, this.domainName, this.status, this.widget});
+  CardWidget({this.title, this.body, this.recordsType, this.domainName, this.status, this.answerLayout});
 
   @override
   _CardWidgetState createState() => _CardWidgetState();
@@ -71,7 +71,7 @@ class _CardWidgetState extends State<CardWidget> {
 
                   ],
                 ),
-                widget,
+                widget.answerLayout,
                /*    Row(
                   mainAxisAlignment:
                   MainAxisAlignment.spaceBetween,

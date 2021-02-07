@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class DashboardServices {
-  Future<List> details(String token) async {
-    var countList = new List();
+  Future<List<int>> details(String token) async {
+    var countList = new List<int>();
     final http.Response response = await http.get(
         'https://flutterappserver.herokuapp.com/dashboard/details',
         headers: <String, String>{
